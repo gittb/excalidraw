@@ -1,0 +1,25 @@
+# Excalidraw — drafted by the /preuser:setup plugin (single source of truth), human-reviewed.
+# bringup: compose-build (docker-compose.yml builds from the repo Dockerfile, port 3000→80).
+up:
+  url: http://localhost:3000
+  health: /
+  ready_timeout_s: 600   # heavy cold build (yarn monorepo + Vite)
+journeys:
+  - name: draw-a-rectangle
+    goal: A user picks the rectangle tool from the toolbar and draws a rectangle on the blank canvas.
+    success: A rectangle shape is visible on the canvas, and the left-hand properties panel (Stroke, Background, Fill) is showing because a shape now exists.
+  - name: add-text-note
+    goal: A user adds a text label to the canvas reading "Hello preuser".
+    success: The text "Hello preuser" is visible as a text element on the canvas.
+  - name: change-shape-stroke-colour
+    goal: A user draws a shape and changes its stroke colour to red using the properties panel.
+    success: A shape with a visibly red outline is on the canvas and the Stroke swatch in the left properties panel shows red as the active colour.
+  - name: open-export-image-dialog
+    goal: A user opens the menu and chooses to export the scene as an image.
+    success: The "Export as image" dialog is open, showing a preview of the scene and the "Save to disk" and PNG/SVG export options.
+  - name: switch-to-dark-mode
+    goal: A user opens the menu and switches the canvas to dark mode.
+    success: The Excalidraw editor is rendered in dark mode — the canvas and surrounding UI are dark instead of the default light theme.
+  - name: draw-connecting-arrow
+    goal: A user selects the arrow tool and draws an arrow on the canvas.
+    success: An arrow with a visible arrowhead is drawn on the canvas.
